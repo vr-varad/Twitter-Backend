@@ -15,7 +15,7 @@ const tweetSchema = new Schema({
         default : 0
     },
     comments : {
-        type : ObjectId,
+        type : String,
     },
 },{timestamps: true})
 
