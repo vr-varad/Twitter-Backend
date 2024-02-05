@@ -7,9 +7,10 @@ const hashTagSchema = new Schema({
         required : true,
         unique: true,
     },
-    tweets : {
-        type: Schema.Types.ObjectId
-    }
+    tweets : [{
+        type: Schema.Types.ObjectId,
+        default: []
+    }]
 },{
     timestamps: true
 })

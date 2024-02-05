@@ -1,8 +1,16 @@
 const express = require('express');
 const connectDB = require('./config/database');
+const bodyParser = require('body-parser'); 
+
+const router = require('./routes/index')
+
 const app = express();
 
-const TweetRepository = require('./repository/tweetRepository')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+app.use('/',router)
+
+
 
 
 const start = async () => {
@@ -10,9 +18,6 @@ const start = async () => {
         await connectDB();
         app.listen(3000, async() => {
             console.log('Server is running on port 3000');
-            const tweetRepo = new TweetRepository()
-            const tweet = await tweetRepo.deleteTweet('65bf9c26c0fe17b3f53308a7')
-            console.log(tweet)
         });
     } catch (error) {
         console.log('Error connecting to the server: ', error);
