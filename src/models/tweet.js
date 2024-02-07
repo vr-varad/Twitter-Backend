@@ -6,10 +6,10 @@ const tweetSchema = new Schema({
     content : {
         type : String,
     },
-    likes : {
-        type : Number,
-        default : 0
-    },
+    likes : [{
+        type : Schema.Types.ObjectId,
+        ref: 'Like'
+    }],
     retweets : {
         type : Number,
         default : 0
