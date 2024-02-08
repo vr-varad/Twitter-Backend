@@ -10,7 +10,7 @@ class TweetService{
     async create(data){
         try {
             const {content,likes,retweets,comments} = data;
-            const tweet = await this.tweetRepository.createTweet({content,likes,retweets,comments});
+            const tweet = await this.tweetRepository.createTweet(data);
             const regex = /#(\w+)/g;
             const tags = (content.match(regex) || []).map(match => match.replace('#', ''));
             let alreadyPresentTags = await this.hashtagRepository.getByName(tags)

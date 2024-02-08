@@ -3,8 +3,7 @@ const Tweet = require('../models/tweet')
 class TweetRepository {
     async createTweet(data){
         try {
-            const {content,likes,retweets,comments} = data;
-            const tweet = await Tweet.create({content,likes,retweets,comments})
+            const tweet = await Tweet.create(data)
             return tweet;
         } catch (error) {
             return {

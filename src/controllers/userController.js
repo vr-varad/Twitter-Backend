@@ -26,7 +26,7 @@ const signUp = async(req,res)=>{
 const signIn = async(req,res)=>{
     try {
         const {email,password} = req.body;
-        const user = await userService.getByEmail(email)
+        const {user,token} = await userService.getByEmail(email)
         if(!user){
             return res.status(404).json({
                 success: false,
@@ -40,6 +40,7 @@ const signIn = async(req,res)=>{
                 success: true,
                 data: user,
                 message: 'User logged in successfully',
+                token,
                 err : {}
             })
         }else{

@@ -9,9 +9,6 @@ const commentSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         required: true
     },
-    comments : {
-        type : String,
-    },
     onModel : {
         type: String,
         required : true,

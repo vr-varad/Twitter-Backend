@@ -16,15 +16,16 @@ class LikeService{
             throw new Error('Invalid model type');
         }
         const exists = await this.likeRepository.findOne({likeable:modelId,onModel:modelType,user:userId});
-        console.log(exists);
         if(exists){
             await this.likeRepository.delete(exists._id);
-            return null;
+            likeable.likes.pull(exists._id);
+            await likeable.save();
+            return {status: false};
         }else{
             const newLike =  await this.likeRepository.create({likeable:modelId,onModel:modelType,user:userId});
             likeable.likes.push(newLike._id);
             await likeable.save();
-            return newLike;
+            return {newLike,status: true};
         }
 
     }

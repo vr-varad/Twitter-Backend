@@ -1,4 +1,4 @@
-const { ObjectId } = require('bson');
+
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -15,6 +15,9 @@ const tweetSchema = new Schema({
         default : 0
     },
     comments : {
+        type : String,
+    },
+    image : {
         type : String,
     },
 },{timestamps: true})

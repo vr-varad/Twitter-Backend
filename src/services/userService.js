@@ -17,7 +17,8 @@ class UserService {
     async getByEmail(email){
         try {
             const user = await this.userRepository.findOne({email});
-            return user;
+            const token = user.genJwt()
+            return {user,token};
         } catch (error) {
             throw error;
         }
