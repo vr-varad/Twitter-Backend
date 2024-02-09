@@ -7,6 +7,7 @@ const commentSchema = new mongoose.Schema({
     },
     user : {
         type : mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     onModel : {
@@ -18,7 +19,15 @@ const commentSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         required : true,
         refPath : 'onModel'
-    }
+    },comments : [
+        {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Comment",
+    }],
+    likes : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'Like'
+    }],
 },{timestamps: true})
 
 

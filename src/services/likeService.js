@@ -11,7 +11,7 @@ class LikeService{
         if(modelType=='Tweet'){
             likeable = await this.tweetRepository.getTweet(modelId)
         }else if(modelType=='Comment'){
-
+            likeable = await this.commentRepository.getComment(modelId);
         }else{
             throw new Error('Invalid model type');
         }

@@ -14,9 +14,12 @@ const tweetSchema = new Schema({
         type : Number,
         default : 0
     },
-    comments : {
-        type : String,
-    },
+    comments : [
+        {
+        type : Schema.Types.ObjectId,
+        ref : "Comment",
+    }
+   ],
     image : {
         type : String,
     },
